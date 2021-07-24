@@ -1,0 +1,57 @@
+
+.Slide{
+  height:200px !important;
+  width: 100% !important;
+}
+
+.hidden {
+  width:100% !important;
+  display: none !important;
+  color: white !important;
+}
+
+
+.Slide {
+  
+ width: 100%;
+  transition: .3s ease-in-out !important;
+  color: white;
+  position: absolute !important;
+}
+
+
+
+.Slide:hover {
+  transform: scale(1.1) !important;    
+  z-index: 1000 !important;
+    height: 420px;
+  
+  /* background-image:none !important; */
+}
+
+.Slide:hover .hidden {
+  box-sizing: border-box;
+  display:inline-block !important;    
+  height: 250px !important;
+  overflow: hidden;
+  border-radius: 5px;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 10%, rgba(28,38,48,0.958420868347339) 30%, rgba(28,38,48,1) 75%) !important;
+  transform: scale(1) !important;
+  margin-top: -90px !important;
+  text-align: left;
+  padding: 20px;
+  z-index: 10000;
+}
+
+
+
+
+
+.overview {
+  font-size: 12px;
+  /* display: block; */
+  font-weight: 700;
+  white-space: normal;
+  line-height: 18px;
+  width: 100%
+}

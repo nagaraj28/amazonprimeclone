@@ -1,0 +1,26 @@
+
+
+
+.video-cntr video{
+    object-fit: fill;
+}
+.cancel-btn{
+    top: 1%;
+    right: 1%;
+    position: absolute;
+}
+.cancel-btn button{
+    display: none;
+   
+}
+
+.video-cntr:hover .cancel-btn button{
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    background-color:inherit;
+    color:white;
+    border: none;   
+}

@@ -1,0 +1,44 @@
+.container{
+  margin-left: 40px;
+  width: calc(100% - 80px);    
+  height:max-content !important;
+  background-color: #0F171E;
+  overflow: visible;
+
+}
+
+.subContainer{
+  /*height: 240px !important;*/
+  height: 190px !important;
+  background-color: #0F171E;  
+}
+
+@media only screen and (max-width: 1000px) {
+  .subContainer{
+    height: 190px !important;
+    background-color: #0F171E;  
+  }
+}
+
+
+.container:hover{
+  z-index: 1000;
+}
+
+.slide:hover .subContainer{
+  height: 240px !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px !important;
+}
+
+.swiper-button2{
+}
+
+.overview {
+  font-size: 12px;
+  /* display: block; */
+  font-weight: 700;
+  white-space: normal;
+  line-height: 18px;
+  width: 100%
+}
+

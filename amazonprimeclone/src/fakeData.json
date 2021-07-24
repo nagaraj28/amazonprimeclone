@@ -1,0 +1,19 @@
+
+data = {
+  [
+
+    {
+        poster:"https://m.media-amazon.com/images/S/sonata-images-prod/PV_IN_SherniLaunch/928cf8f5-d21f-4999-b2e7-7aac6b1e059b._UR3000,600_SX1500_FMwebp_.jpeg",
+        title:"Sherni",
+        Description:"Leonardo DiCaprio plays a thief who steals corporate secrets from sleeping minds. Now he must be the first to pull off the",
+        },
+      {
+      poster:"https://images-eu.ssl-images-amazon.com/images/S/pv-target-images/4ce85335b541b460ce9ef01cb4884ea7c64cea4c2ada91a15bbb219c259773c7._UR1920,1080_RI_SX356_FMjpg_.jpg",
+      title:"Ek mini Katha",
+      Description:"Leonardo DiCaprio plays a thief who steals corporate secrets from sleeping minds. Now he must be the first to pull off the",
+      },
+
+  ]
+
+
+}
