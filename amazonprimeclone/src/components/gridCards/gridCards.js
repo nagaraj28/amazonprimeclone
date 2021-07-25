@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../../context/Context";
 import classes from "./gridCards.css"
 export default function GridCard({dataItem}) {
     console.log(dataItem);
+    const {playerItemUtil} = useContext(Context);
    return(
       <Link to="/player">
      {/* <div className="cardcontainer-box">    */}
-          <div className="card-container">
+          <div className="card-container"  onClick={()=>playerItemUtil(dataItem)}>
        <div className="cardImage">
        <img src={dataItem.imageSrc} alt="img1"/>
         </div>

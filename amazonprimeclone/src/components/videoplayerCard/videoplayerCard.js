@@ -4,14 +4,16 @@ import classes from "./videoplayerCard.css"
 import HeaderContainer from "../../container/header";
 import Footer from "../../footer/footer";
 import PlayVideo from "../playVideo/playVideo";
+import { Context } from "../../context/Context";
 export default function PlayerCard(props){
-
-
+        const {playerItem} = useContext(Context);
+        console.log(playerItem);
     return (
             <>
+            <HeaderContainer/>
    <div className="card-img-container">
            <div className="desc-container">
-           <h1>Ek Mini Katha</h1>
+           <h1>{playerItem.title}</h1>
            <div>
                    <span>
                    2 h 12 min
@@ -27,14 +29,11 @@ export default function PlayerCard(props){
                    </span>
            </div>
            <div>
-                   <p className="desc-txt">
-                   Based on a series of true incidents that shook the Indian IT Industry and conned a whopping $380 million dollars (Rs.2,800 crores). This Project is about cultural clash between generations; between east and west; between rich and poor. On a moral downward spiral, yet an upward climb to great financial success, Anu and Arjun become savvy criminals and devise an ingenious scam.
-                           </p>
+                   <p className="desc-txt">{playerItem.description}</p>
            </div>
 
            <div className="btns-container" >
                            <span className="playbtn-ctnr" >
-                          
                                    <Link to="/player/playVideo">
                              <span className="play-btn">
                                    Play
@@ -69,10 +68,11 @@ export default function PlayerCard(props){
            </div>
           
       <div className="img-container">
-      <img className="img-cover" src="https://images-eu.ssl-images-amazon.com/images/S/pv-target-images/c60bd07848ad25c1b43d432d6311e5824f338443f6277c5e4438230ee3c2d8c1._RI_V_TTW_.jpg" alt=""/>
+      <img className="img-cover" width="4200" height="600" src={playerItem.imageSrc}/*"https://images-eu.ssl-images-amazon.com/images/S/pv-target-images/c60bd07848ad25c1b43d432d6311e5824f338443f6277c5e4438230ee3c2d8c1._RI_V_TTW_.jpg"*/ alt={playerItem.slug}/>
       </div>
 
    </div>
+   <Footer/>
          
    </>
    

@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import styles from "./cards.module.css"
+import styles from "./cards.module.css";
+import { Context } from "../../context/Context";
 
 
 export default function Card({dataItem}) {
   // console.log(dataItem)
-
+      const {playerItemUtil} =useContext(Context);
    return(
-      <Link to="/player">
-          <div className={styles.Slide}>
+      <Link to="/player" >
+          <div className={styles.Slide}  onClick={()=>playerItemUtil(dataItem)}>
        <img width="100%"
-                  style={{ width: "100%", objectFit: "contain" }}  src={dataItem.imageSrc} alt="img1"/>
+                  style={{ width: "100%", objectFit: "contain" }}  src={dataItem.imageSrc} alt={dataItem.slug}/>
         <div className={styles.hidden} > 
         <div className={styles.cardbtnsctnr}>
            <div style={{display:"flex",marginRight:"6em"}}>

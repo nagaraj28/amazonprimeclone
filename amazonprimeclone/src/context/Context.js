@@ -7,6 +7,7 @@ export default function ContextProvider({children}){
     const [isProfileExpand,setProfileExpand] = useState(false);
     const [genre,setGenre]  = useState(null);
     const [searchText,setSearchText]  = useState('');
+    const [playerItem,setplayerItem]  = useState({});
     const [profileName,setProfileName]=useState('SystemName');
     const {firebase} = useContext(FireBaseContext);
    
@@ -37,7 +38,10 @@ export default function ContextProvider({children}){
       }
 
     }
-  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userName}}>
+    function playerItemUtil(dataValue){
+      setplayerItem(dataValue);
+    }
+  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userName,playerItem,playerItemUtil}}>
         {children}
     </Context.Provider>)
 }
