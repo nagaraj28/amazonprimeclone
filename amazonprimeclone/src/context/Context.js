@@ -9,6 +9,8 @@ export default function ContextProvider({children}){
     const [searchText,setSearchText]  = useState('');
     const [playerItem,setplayerItem]  = useState({});
     const [profileName,setProfileName]=useState('SystemName');
+    const [userId,setUserId]=useState('');
+    const [currentTypeValue,setCurrentType]=useState("series");
     const {firebase} = useContext(FireBaseContext);
    
       function profileExpand() {
@@ -24,12 +26,16 @@ export default function ContextProvider({children}){
         console.log("searchText")
         setSearchText(searchvalue);
       }     
-      function userName(){
+      function userNameAndId(){
+        console.log("setting up username and id call")
         const user = firebase.auth().currentUser;
         if(user!==null){
           const updateName = user.displayName;
-          if(updateName)
-         setProfileName(user.displayName);
+          if(updateName){
+            console.log(user.uid)
+            setProfileName(user.displayName);
+            setUserId(user.uid);
+          }
          else
          setProfileName("no-userName");
       }
@@ -41,7 +47,15 @@ export default function ContextProvider({children}){
     function playerItemUtil(dataValue){
       setplayerItem(dataValue);
     }
-  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userName,playerItem,playerItemUtil}}>
+    function currentType(value){
+      setCurrentType(value);
+    }
+
+    function addToFavourites(dataItem,type){
+      console.log("add clicked"+dataItem+"type is"+type);
+            firebase.firestore().collection("users").doc(userId).collection(type).add(dataItem); 
+    }
+  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userNameAndId,playerItem,playerItemUtil,addToFavourites,currentType,currentTypeValue}}>
         {children}
     </Context.Provider>)
 }

@@ -4,9 +4,9 @@ import styles from "./cards.module.css";
 import { Context } from "../../context/Context";
 
 
-export default function Card({dataItem}) {
+export default function Card({dataItem,type}) {
   // console.log(dataItem)
-      const {playerItemUtil} =useContext(Context);
+      const {playerItemUtil,addToFavourites} =useContext(Context);
    return(
       <Link to="/player" >
           <div className={styles.Slide}  onClick={()=>playerItemUtil(dataItem)}>
@@ -26,7 +26,7 @@ export default function Card({dataItem}) {
            <span style={{ marginTop:"32px"}}>Play</span>
           </div>
            <div style={{display:"flex",marginTop:"30px"}}>
-           <span style={{marginRight:""}}>
+           <span style={{marginRight:""}} onClick={()=>addToFavourites(dataItem,type)}>
            <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"><title>Add</title><path d="M3 12h18m-9 9V3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"></path></svg>
              </span> 
              <span className="">

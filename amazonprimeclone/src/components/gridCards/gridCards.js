@@ -4,11 +4,11 @@ import { Context } from "../../context/Context";
 import classes from "./gridCards.css"
 export default function GridCard({dataItem}) {
     console.log(dataItem);
-    const {playerItemUtil} = useContext(Context);
+    const {playerItemUtil,addToFavourites,currentTypeValue} = useContext(Context);
    return(
       <Link to="/player">
      {/* <div className="cardcontainer-box">    */}
-          <div className="card-container"  onClick={()=>playerItemUtil(dataItem)}>
+          <div className="card-container" onClick={()=>playerItemUtil(dataItem)}>
        <div className="cardImage">
        <img src={dataItem.imageSrc} alt="img1"/>
         </div>
@@ -26,7 +26,7 @@ export default function GridCard({dataItem}) {
            <span style={{ marginTop:"32px"}}>Play</span>
           </div>
            <div style={{display:"flex",marginTop:"30px"}}>
-           <span style={{marginRight:""}}>
+           <span style={{marginRight:""}} onClick={addToFavourites(dataItem,currentTypeValue)}>
            <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"><title>Add</title><path d="M3 12h18m-9 9V3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"></path></svg>
              </span> 
              <span className="">

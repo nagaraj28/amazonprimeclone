@@ -1,4 +1,4 @@
-import React ,{forwardRef, useContext, useRef} from "react";
+import React ,{forwardRef, useContext} from "react";
 import Card from "../components/cards/cards";
 import classes from "./cardContainer.css";
 import { Context } from "../context/Context";
@@ -15,7 +15,7 @@ import SwiperCore, {
 } from "swiper";
 import { Link } from "react-router-dom";
 
-export  const CardContainer=forwardRef((props,ref)=>{
+export  const CardContainer=forwardRef((props)=>{
     const section = props.section;
     const type = props.type;
     SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade, Scrollbar]);
@@ -65,7 +65,7 @@ return(
                 section.data.map((dataItem,index)=>{
                     return (
                     <SwiperSlide className={styles.subContainer}>
-     <Card className={styles.Slide} dataItem={dataItem}   />
+     <Card className={styles.Slide} dataItem={dataItem} type={type==="Movies"?"movies":"series"}  />
     </SwiperSlide>)
                 }
                 )

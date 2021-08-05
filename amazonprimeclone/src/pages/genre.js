@@ -6,7 +6,6 @@ import { Context } from "../context/Context";
 
 export default function Genre({dataCollection}){
   const {genre} = useContext(Context);
-  
     return (
   <>
   <HeaderContainer/>

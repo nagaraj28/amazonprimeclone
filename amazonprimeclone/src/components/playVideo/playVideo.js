@@ -17,8 +17,6 @@ export default function PlayVideo(props){
             type="video/mp4" />
     Sorry, your browser doesn't support embedded videos.
 </video>
-
-
 <div className="cancel-btn" onClick={()=>history.goBack()}> 
     <button>X</button>
 </div>

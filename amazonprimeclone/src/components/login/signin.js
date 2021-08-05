@@ -11,13 +11,13 @@ export default function SignIn(){
     const [error,setError] = useState('')
     const history = useHistory();
     const {firebase} = useContext(FireBaseContext);
-    const {userName} = useContext(Context);
+    const {userNameAndId} = useContext(Context);
  const loginfunc=()=>{
         console.log("login page submit")
       console.log(email);
     console.log(password);
                     firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
-                    userName(); 
+                        userNameAndId(); 
                      history.push("/home")
                 }).catch(err=>{setError("incorrect details")});
             }
