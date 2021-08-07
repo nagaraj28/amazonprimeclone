@@ -1,6 +1,7 @@
 
 
 export default function selectionMap({series,movies}){
+        
 
     return {
         series:[
@@ -15,5 +16,4 @@ export default function selectionMap({series,movies}){
             { title:'horror',data:movies.filter(item=>item.genre==='horror') },
         ]
     }
-
 }

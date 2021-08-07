@@ -7,6 +7,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import  ContextProvider from "./context/Context"
 import {FireBaseContext} from "./context/firebase"
+import SignIn from './components/login/signin';
+import {Switch,Route} from "react-router-dom"
+
+
 /*import {seedDatabase} from './seed';*/
 
 const config = {
@@ -26,7 +30,6 @@ ReactDOM.render(
   <FireBaseContext.Provider value={{firebase: window.firebase}}>
       <ContextProvider>
      <Router>
-
 <App />
 </Router>
   </ContextProvider>

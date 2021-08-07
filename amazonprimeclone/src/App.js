@@ -7,16 +7,17 @@ import Kids from "./pages/kids";
 import TVShows from "./pages/tvShows";
 import PlayerCard from "./components/videoplayerCard/videoplayerCard";
 import PlayVideo from "./components/playVideo/playVideo";
-import { useContent } from "./hooks";
-import { selectionMap } from "./utils";
+import { useContent,useFavContent } from "./hooks";
+import { selectionMap,favselectionMap } from "./utils";
 import Register from "./components/login/registration";
 import SignIn from "./components/login/signin";
 import Genre from "./pages/genre";
 import Search from "./pages/search";
 import { Context } from "./context/Context";
-import HeaderContainer from "./container/header";
-import Footer from "./footer/footer";
+import Favourites from "./pages/favourites";
+import { FireBaseContext } from "./context/firebase";
 
+  
 function App() {
 
   /*let ref1=useRef(null);
@@ -24,10 +25,11 @@ function App() {
   let ref3=useRef(null);
 */
 
-const {series} = useContent('series');
+   const {series} = useContent('series');
     const {movies} = useContent('movies');
-    const dataCollection = selectionMap({series,movies});
-   
+  const dataCollection = selectionMap({series,movies});
+  
+    
     return (
     <>
  <Switch>
@@ -38,28 +40,31 @@ const {series} = useContent('series');
    <Register/>
    </Route>
    <Route exact path="/home">
-   <Home dataCollection={dataCollection}/>
+   <Home dataCollection={dataCollection} />
    </Route>
-   <Route exact path="/movies">
-    <Movies dataCollection={dataCollection}/>
+   <Route exact path="/movies" >
+    <Movies dataCollection={dataCollection} />
    </Route>
    <Route exact path="/tvshows">
-    <TVShows dataCollection={dataCollection}/>
+    <TVShows dataCollection={dataCollection}  />
    </Route>
    <Route exact path="/kids">
-    <Kids dataCollection={dataCollection}/>
+    <Kids dataCollection={dataCollection}  />
    </Route>
    <Route exact path="/player">
-    <PlayerCard dataCollection={dataCollection}/>
+    <PlayerCard dataCollection={dataCollection}  />
    </Route>
    <Route exact path="/player/playVideo">
-    <PlayVideo dataCollection={dataCollection}/>
+    <PlayVideo dataCollection={dataCollection} />
    </Route>
    <Route exact path="/genre">
-    <Genre dataCollection={dataCollection}/>
+    <Genre dataCollection={dataCollection} />
    </Route>
    <Route exact path="/search">
-    <Search dataCollection={dataCollection}/>
+    <Search dataCollection={dataCollection} />
+   </Route>
+   <Route exact path="/favourites">
+    <Favourites />
    </Route>
  </Switch>
     </>

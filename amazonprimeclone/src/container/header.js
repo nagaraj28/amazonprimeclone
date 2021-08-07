@@ -37,10 +37,12 @@ export default function HeaderContainer() {
         <div style={{maxWidth:"100%",display:"flex",backgroundColor:"#0f171e",position:"absolute",zIndex:"5",right:"2%",lineHeight:"40px",color:"#c4cacf"}}>
           <ul style={{display:"flex",listStyle:"none",}}>
             <div style={{marginRight:"5em",}}>
-            <li>Your Watchlist</li>
+            <li onClick={()=>{
+              history.push("/favourites")
+            }}>Your Watchlist</li>
             <li>Account and Settings</li>
             <li>Watch Anywhere</li>
-            <li>Your Watchlist</li>
+            <li>Help</li>
             <li onClick={()=>{
                console.log("logging out current user...");
                firebase.auth().signOut().then(()=>{

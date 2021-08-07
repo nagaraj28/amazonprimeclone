@@ -18,8 +18,8 @@ import { Link } from "react-router-dom";
 export  const CardContainer=forwardRef((props)=>{
     const section = props.section;
     const type = props.type;
-    SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade, Scrollbar]);
-    const {genreUtil} = useContext(Context);
+    SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade,Scrollbar]);
+    const {genreUtil,currentType} = useContext(Context);
 return(
     <>
     <div  className="cardTitle">
@@ -27,7 +27,10 @@ return(
               {type} in {section.title}
              </h3>
            <Link to="/genre" onClick={()=>{genreUtil(section)}}>
-           <p style={{marginTop:"27px",marginLeft:"10px",fontSize:"13px",color:"#79b8f3"}}>See more</p>
+           <p style={{marginTop:"27px",marginLeft:"10px",fontSize:"13px",color:"#79b8f3"}} onClick={()=>{
+              const typeVal = type==="Movies"?"movies":"series";
+               currentType(typeVal)
+               }}>See more</p>
            </Link> 
         </div>
     <div>
