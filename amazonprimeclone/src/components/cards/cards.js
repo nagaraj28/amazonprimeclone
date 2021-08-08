@@ -1,5 +1,5 @@
 import React, { useContext,useEffect,useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./cards.module.css";
 import { Context } from "../../context/Context";
 import { useFavContent } from "../../hooks";
@@ -12,30 +12,28 @@ export default function Card({dataItem,type}) {
    let favdataCollection = [];
    favdataCollection=favselectionMap({favseries,favmovies});    
    const [favData,setFavData] =useState([]);
+   const [isFav,setIsFav]=useState({fav:false})
    const {playerItemUtil,addToFavourites,deleteFromFavourites,userId} =useContext(Context);
+   const history= useHistory();
+   favdataCollection=favselectionMap({favseries,favmovies});    
 
 
    //console.log("favs");
  //  console.log(favdataCollection);
       useEffect(()=>{
-         favdataCollection=favselectionMap({favseries,favmovies});    
          setFavData(favdataCollection.favContentData);
-      },[favdataCollection.favContentData.length!==favData.length,userId]);
-      
+      },[(favdataCollection.favContentData).length!==(favData).length,userId,isFav]);
       console.log("favData")
-      console.log(favData);
-
- 
+      console.log(favData); 
    return(
-      <Link to="/player" >
-          <div className={styles.Slide}  onClick={()=>playerItemUtil(dataItem)}>
+          <div className={styles.Slide}  onClick={()=>{playerItemUtil(dataItem)
+        }}>
        <img width="100%"
-                  style={{ width: "100%", objectFit: "contain"}}  src={dataItem.imageSrc} alt={dataItem.slug}/>
+                  style={{ width: "100%", objectFit: "contain"}}  src={dataItem.imageSrc} alt={dataItem.slug} onClick={()=>{  history.push("/player")}}/>
         <div className={styles.hidden} > 
         <div className={styles.cardbtnsctnr}>
            <div style={{display:"flex",marginRight:"6em"}}>
            <Link to="/player/playvideo">
-              
            <span style={{}}> 
                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                width="85" height="85"
@@ -50,9 +48,20 @@ export default function Card({dataItem,type}) {
               (favData.filter(item=>(item.id===dataItem.id)).length>0)?(<span  onClick={()=>{
                  deleteFromFavourites(type,dataItem.docId)
                   favdataCollection=favselectionMap({favseries,favmovies});
+                  setIsFav((prevState)=>({
+                     ...prevState,
+                     fav:!(prevState.fav)
+                  }))
 
               }}>
-              <svg height="25px" id="svg2" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"  ><g id="background"><rect fill="none" height="32" width="32"/></g><g id="document_x5F_text_x5F_remove"><title>remove from favourites</title><path d="M24,14.059V5.584L18.414,0H0v32h24v-0.059c4.499-0.5,7.998-4.309,8-8.941C31.998,18.366,28.499,14.556,24,14.059z    M17.998,2.413L21.586,6h-3.588V2.413z M2,30V1.998h14v6.001h6v6.06c-1.752,0.194-3.352,0.89-4.652,1.941H4v2h11.517   c-0.412,0.616-0.743,1.289-0.994,2H4v2h10.059C14.022,22.329,14,22.661,14,23c0,2.829,1.308,5.351,3.349,7H2z M23,29.883   c-3.801-0.009-6.876-3.084-6.884-6.883c0.008-3.801,3.083-6.876,6.884-6.885c3.799,0.009,6.874,3.084,6.883,6.885   C29.874,26.799,26.799,29.874,23,29.883z M20,12H4v2h16V12z"/><g><rect height="2" width="10" x="18" y="22"/></g></g></svg></span>):(<span style={{marginRight:""}} onClick={()=>addToFavourites(dataItem,type,dataItem.docId)}>
+              <svg height="25px" id="svg2" version="1.1" viewBox="0 0 32 32" width="32px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg"  ><g id="background"><rect fill="none" height="32" width="32"/></g><g id="document_x5F_text_x5F_remove"><title>remove from favourites</title><path d="M24,14.059V5.584L18.414,0H0v32h24v-0.059c4.499-0.5,7.998-4.309,8-8.941C31.998,18.366,28.499,14.556,24,14.059z    M17.998,2.413L21.586,6h-3.588V2.413z M2,30V1.998h14v6.001h6v6.06c-1.752,0.194-3.352,0.89-4.652,1.941H4v2h11.517   c-0.412,0.616-0.743,1.289-0.994,2H4v2h10.059C14.022,22.329,14,22.661,14,23c0,2.829,1.308,5.351,3.349,7H2z M23,29.883   c-3.801-0.009-6.876-3.084-6.884-6.883c0.008-3.801,3.083-6.876,6.884-6.885c3.799,0.009,6.874,3.084,6.883,6.885   C29.874,26.799,26.799,29.874,23,29.883z M20,12H4v2h16V12z"/><g><rect height="2" width="10" x="18" y="22"/></g></g></svg></span>):(<span style={{marginRight:""}} onClick={()=>{
+                 addToFavourites(dataItem,type,dataItem.docId)
+                 favdataCollection=favselectionMap({favseries,favmovies});
+                  setIsFav((prevState)=>({
+                     ...prevState,
+                     fav:!(prevState.fav)
+                  }))
+                 }}>
            <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"><title>Add</title><path d="M3 12h18m-9 9V3" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"></path></svg>
              </span>)
            }
@@ -62,7 +71,7 @@ export default function Card({dataItem,type}) {
                    </span>
            </div>
         </div>
-        <div className={styles.cardtxt} >
+        <div className={styles.cardtxt} onClick={()=>{history.push("/player")}} >
         <p>included with prime</p>
         <h1 style={{
                         fontSize: "15px",
@@ -73,6 +82,5 @@ export default function Card({dataItem,type}) {
         </div>
         </div>
         </div>
-        </Link>
 );
 }

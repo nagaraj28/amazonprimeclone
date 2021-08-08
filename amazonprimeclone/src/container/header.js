@@ -29,7 +29,12 @@ export default function HeaderContainer() {
       </Header.List>
       <Header.SearchContainer>
       <Header.SearchIcon src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAACZUlEQVRIia2VP0xTURSHv3O9pH3BDgZEIiQ64IAdSkpJiDEEE3ecDE7KZBRlJbobJ2M6QGQRXYhxksTRRIWSkPS9ikN16agGDJ1AAknb4+B7Bpv2vTb1N90/55zvnHvvO0+oUy6XS8Tj8RlgChgGeoFd4CvwxnGc5WQyuV/v10xyfJLP56dFJAv0hfjsiMjc6Ojo61YAJhh4nvdQRFb84OsiMm2MGXAcJ2atHVTVG0AOOKOqr1zXfdByBX7mK0AVuJ/JZJ41c3Bd9y6QBU6IyHRUJeKfecnP/E5Y8DrIArDtOM6FsDsx/oX2qepaK8EBMpnMIrAB9B8cHNwKszX8eS0YYxZbCR5IVRd8v6kowDCAiKy3A+jq6lrzQRejAD0AsVhstx1Ad3d3YN8TBSgDHB0d9bYDKJfLp4NhKEBVvwBUq9WJdgDW2sC+GAoQkVUAEZltNbiqSmAf+DcFOI6zDOwAl/33HSnXdWdV9RKwHY/HX4YCksnkvojMAQpkoyD5fP6eiDz1p0+iGt/fZuf3lkf+2oaqLlSr1fVEIvFzb2+vz1o7ISJB5oF2jTFX0+n050gAgOd511U1C/SHJLUNPAHm8Vu5qs6LyDljzFI6nf7RFABQLBZPHh4e3gSu+R9R8D8oisiqtfZFKpX6VSgUUrVa7Z2/H6hUqVSujI+Pf2sKaEee582o6vO65X8gpoFfy1LV8w2Wh6y17zc3NwehwwoKhcLZWq32ERhqsF2y1k52BADY2toaqFQqH5pAPnV0RAAjIyPfrbWTQKnBdk/HFQRqVImI3P5vgGOQt8ApVX08Nja29BvUdOySpS3laAAAAABJRU5ErkJggg=="/>
-      <Header.SearchBox type="text-box" placeholder="Search" onChange={(e)=>{searchUtil(e.target.value)}}/>
+      <Header.SearchBox type="text-box" placeholder="Search"  onKeyPress={(e)=>{
+        if(e.key==='Enter'){
+          searchUtil(e.target.value)
+        history.push("/search");
+        }
+         }}/>
       </Header.SearchContainer>
       <Header.Profile onClick={profileExpand} >
         <h3 >{profileName}</h3>

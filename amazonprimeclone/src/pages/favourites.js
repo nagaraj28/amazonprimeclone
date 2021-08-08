@@ -1,33 +1,25 @@
 import React, { useContext, useEffect,useState } from "react";
-import CardsList from "../container/cardsList";
 import Footer from "../footer/footer";
 import HeaderContainer from "../container/header";
 import { Context } from "../context/Context";
 import { useFavContent } from "../hooks";
 import { favselectionMap } from "../utils";
-
+import FavCardsList from "../container/favCardsList";
 export default function Favourites(){
-
-
   const {favseries} = useFavContent('series');
   const {favmovies} = useFavContent('movies');
    let favdataCollection = [];
    favdataCollection=favselectionMap({favseries,favmovies});    
    const [favData,setFavData] =useState([]);
-   const {playerItemUtil,addToFavourites,deleteFromFavourites,userId} =useContext(Context);
-
-
+   const {userId} =useContext(Context);
    //console.log("favs");
  //  console.log(favdataCollection);
       useEffect(()=>{
          favdataCollection=favselectionMap({favseries,favmovies});    
          setFavData(favdataCollection.favContentData);
-      },[favdataCollection.favContentData.length!==favData.length,userId]);
-      
+      },[favdataCollection.favContentData.length!==favData.length,userId]);      
       console.log("favData")
       console.log(favData);
-  
-
     return (
   <>
   <HeaderContainer/>
@@ -39,14 +31,14 @@ export default function Favourites(){
       {
             //movies
         favdataCollection['movies'].map((section,index)=>{
-                      return <CardsList key ={`${index}`} section={section}/>  
+                      return <FavCardsList key ={`${index}`} section={section} typeVal={"movies"}/>  
                      }   
                      )
                   }
                    {
             //series
             favdataCollection['series'].map((section,index)=>{
-                      return <CardsList key ={`${index}`} section={section}/>  
+                      return <FavCardsList key ={`${index}`} section={section} typeVal={"series"}/>  
                      }   
                      )
                      

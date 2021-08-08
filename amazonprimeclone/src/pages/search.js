@@ -5,7 +5,6 @@ import Footer from "../footer/footer";
 import Fuse from "fuse.js";
 import { Context } from "../context/Context";
 export default function Search({dataCollection}){
-
   const {searchText} = useContext(Context);
   const [movieSItems,setMovieSItems] = useState([{}]);
   const [tvSItems,settvSItems] = useState([{}]);
@@ -19,21 +18,20 @@ export default function Search({dataCollection}){
   },[searchText]);
   console.log(movieSItems);
   console.log(tvSItems);
+  console.log(searchText)
 
     return (
         <>
         <HeaderContainer/>
         <div >
-          <h4 style={{marginLeft:"50px",marginBottom:"20px"}}>search results</h4>
+          <h4 style={{marginLeft:"50px",marginBottom:"20px"}}>search results for "{searchText}"</h4>
             <hr style={{marginLeft:"40px",marginRight:"25px",opacity:"0.5"}}/>
             <div style={{margin:"0 40px",display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(230px, 1fr) )",gridGap:"25px"}}>
                      {
-                      
-                    (searchText.length>0)?movieSItems.map((section,index)=>(<CardsList section={section.item}/>)):(<div></div>)          
+                    (searchText.length>0 && movieSItems.length>0 && ("item" in movieSItems[0]) )?movieSItems.map((section,index)=>(<CardsList key={index} section={section.item}/>)):(<div></div>)          
                     }
                     {
-                    (searchText.length>0)?tvSItems.map((section,index)=>(<CardsList section={section.item}/>)):(<div></div>)          
-
+                    (searchText.length>0 && tvSItems.length>0 && ("item" in tvSItems[0]))?tvSItems.map((section,index)=>(<CardsList  key={index} section={section.item}/>)):(<div></div>)          
                     }
             </div>
           </div>

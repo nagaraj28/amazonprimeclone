@@ -13,6 +13,7 @@ import Register from "./components/login/registration";
 import SignIn from "./components/login/signin";
 import Genre from "./pages/genre";
 import Search from "./pages/search";
+import HeaderContainer from "./container/header";
 import { Context } from "./context/Context";
 import Favourites from "./pages/favourites";
 import { FireBaseContext } from "./context/firebase";
