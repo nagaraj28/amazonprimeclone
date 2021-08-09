@@ -3,8 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import { FireBaseContext } from "../../context/firebase";
 import { Context } from "../../context/Context";
 
-
-
 export default function SignIn(){
     const [email,setEmail]=useState('');
     const [password,setPassword] = useState('')
@@ -18,7 +16,7 @@ export default function SignIn(){
     console.log(password);
                     firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
                         userNameAndId(); 
-                     history.push("/home")
+                     history.push("/")
                 }).catch(err=>{setError("incorrect details")});
             }
     return(

@@ -9,13 +9,13 @@ export default function HeaderContainer() {
   const {firebase} = useContext(FireBaseContext);
   const history = useHistory();
   return (
-    <Header >
+    <Header className="header" >
     <Header.NavBar >
-      <Link  to="/home">
+      <Link  to="/">
       <Header.Logo style={{color:"white"}}>primevideo</Header.Logo>
       </Link>
     <Header.List>
-      <Link to="/home">
+      <Link to="/">
       <Header.ListItem> Home </Header.ListItem>
       </Link>
       <Link to="/tvshows">

@@ -15,7 +15,7 @@ export default function Home({dataCollection}){
     return (
         <>
         <HeaderContainer/>
-        <Carousel dataCollection={dataCollection}/>
+        <Carousel dataCollection={dataCollection}/> 
         <Series dataCollection={dataCollection} />
         <Films dataCollection={dataCollection}/>
         <Footer/>

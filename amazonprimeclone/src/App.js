@@ -17,6 +17,7 @@ import HeaderContainer from "./container/header";
 import { Context } from "./context/Context";
 import Favourites from "./pages/favourites";
 import { FireBaseContext } from "./context/firebase";
+import ProtectedRoute from "./components/protectRoute.js/protectroutes";
 
   
 function App() {
@@ -40,33 +41,15 @@ function App() {
  <Route exact path="/register">
    <Register/>
    </Route>
-   <Route exact path="/home">
-   <Home dataCollection={dataCollection} />
-   </Route>
-   <Route exact path="/movies" >
-    <Movies dataCollection={dataCollection} />
-   </Route>
-   <Route exact path="/tvshows">
-    <TVShows dataCollection={dataCollection}  />
-   </Route>
-   <Route exact path="/kids">
-    <Kids dataCollection={dataCollection}  />
-   </Route>
-   <Route exact path="/player">
-    <PlayerCard dataCollection={dataCollection}  />
-   </Route>
-   <Route exact path="/player/playVideo">
-    <PlayVideo dataCollection={dataCollection} />
-   </Route>
-   <Route exact path="/genre">
-    <Genre dataCollection={dataCollection} />
-   </Route>
-   <Route exact path="/search">
-    <Search dataCollection={dataCollection} />
-   </Route>
-   <Route exact path="/favourites">
-    <Favourites />
-   </Route>
+   <ProtectedRoute exact path="/" dataCollection={dataCollection} component={Home}/>
+   <ProtectedRoute exact path="/movies" dataCollection={dataCollection} component={Movies}/>
+   <ProtectedRoute exact path="/tvshows" dataCollection={dataCollection} component={TVShows}/>
+   <ProtectedRoute exact path="/tvshows" dataCollection={dataCollection} component={Kids}/>
+   <ProtectedRoute exact path="/player" dataCollection={dataCollection} component={PlayerCard}/>
+   <ProtectedRoute exact path="/player/playVideo" dataCollection={dataCollection} component={PlayVideo}/>
+   <ProtectedRoute exact path="/genre" dataCollection={dataCollection} component={Genre}/>
+   <ProtectedRoute exact path="/search" dataCollection={dataCollection} component={Search}/>
+   <ProtectedRoute exact path="/favourites" component={Favourites}/>
  </Switch>
     </>
        )
