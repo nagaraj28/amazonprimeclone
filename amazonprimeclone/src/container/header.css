@@ -3,14 +3,25 @@
     color: white;
     opacity: 0.6;
 }
-.pro-list:hover{
+.pro-list:hover,.proName:hover{
 opacity: 1;
 }
-.proName,.pro-list{
+.proName,.pro-list,.drpdwnup{
     cursor: pointer;
 }
-.drpdwn{
+.proName{
+    margin-left: 8px;
+    font-size:15px;
+    margin-top: 22px;
+    font-weight: 550;
+    opacity: 0.6;
+}
+.drpdwnup{
     margin-top: 14px;
     margin-left: 0;
     padding-left: 0;
+}
+.drpdwndown{
+    margin:0 15px;
+    margin-top: 20px;
 }
