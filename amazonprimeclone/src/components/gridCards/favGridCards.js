@@ -5,7 +5,7 @@ import classes from "./gridCards.css"
 import { useFavContent } from "../../hooks";
 import { favselectionMap } from "../../utils";
 export default function FavGridCard({dataItem,typeVal}) {
-    console.log(dataItem);
+   
     const {playerItemUtil,deleteFromFavourites,userId} = useContext(Context);
     const {favseries} = useFavContent('series');
   const {favmovies} = useFavContent('movies');
@@ -17,10 +17,11 @@ export default function FavGridCard({dataItem,typeVal}) {
    useEffect(()=>{
       favdataCollection=favselectionMap({favseries,favmovies});    
       setFavData(favdataCollection.favContentData);
-   },[favdataCollection.favContentData.length!==favData.length,userId,isFav]);
+   },[isFav]);
    
    console.log("favData")
    console.log(favData); 
+
    return(
       <div>
           <div className="card-container" >
@@ -62,7 +63,7 @@ export default function FavGridCard({dataItem,typeVal}) {
            </div>
         </div>
         <div style={{marginLeft:"2rem",marginRight:"2rem",marginTop:"3rem",color:"white"}}    onClick={()=>{
-             playerItemUtil(dataItem)
+             playerItemUtil(dataItem,typeVal)
              history.push("/player")
             }
           }>

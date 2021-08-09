@@ -15,9 +15,8 @@ import SwiperCore, {
 } from "swiper";
 import { Link } from "react-router-dom";
 
-export  const CardContainer=forwardRef((props)=>{
-    const section = props.section;
-    const type = props.type;
+export  const CardContainer=forwardRef(({section,type,typeVal})=>{
+    
     SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade,Scrollbar]);
     const {genreUtil,currentType} = useContext(Context);
 return(
@@ -40,7 +39,6 @@ return(
         slidesPerColumn={1}
         navigation={{ nextEl: ".swiper-button2", prevEl: ".swiper-button2" }}
         navigation
-     
         speed={800}
         scrollbar={{ draggable: true, hide: true, el: ".swiper-scrollbar" }}
         onSwiper={(swiper) => swiper}
@@ -60,7 +58,6 @@ return(
             1400:{
                 slidesPerView:5
             }
-
         }  
         } 
         className={styles.container}>
@@ -68,7 +65,7 @@ return(
                 section.data.map((dataItem,index)=>{
                     return (
                     <SwiperSlide className={styles.subContainer}>
-     <Card className={styles.Slide} dataItem={dataItem} type={type==="Movies"?"movies":"series"}  />
+     <Card className={styles.Slide} dataItem={dataItem} typeVal={typeVal}  />
     </SwiperSlide>)
                 }
                 )

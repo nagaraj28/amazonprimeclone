@@ -17,8 +17,6 @@ export default function useContent(target) {
                 }));
                 setContent(allContent);
             })
-          
-
     }, [])
     
     return { [target]: content };

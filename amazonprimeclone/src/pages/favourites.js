@@ -6,7 +6,7 @@ import { useFavContent } from "../hooks";
 import { favselectionMap } from "../utils";
 import FavCardsList from "../container/favCardsList";
 export default function Favourites(){
-  const {favseries} = useFavContent('series');
+ const {favseries} = useFavContent('series');
   const {favmovies} = useFavContent('movies');
    let favdataCollection = [];
    favdataCollection=favselectionMap({favseries,favmovies});    
@@ -20,9 +20,10 @@ export default function Favourites(){
       },[favdataCollection.favContentData.length!==favData.length,userId]);      
       console.log("favData")
       console.log(favData);
+      
     return (
   <>
-  <HeaderContainer/>
+            <HeaderContainer/>
   <div >
   <h4 style={{marginLeft:"50px",marginBottom:"20px"}}>WatchList</h4>
     <h4 style={{marginLeft:"50px",marginBottom:"20px"}}>All</h4>
@@ -45,7 +46,9 @@ export default function Favourites(){
                   }
       </div>
     </div>
+                
     <Footer/>
   </>
     )
+    
 }

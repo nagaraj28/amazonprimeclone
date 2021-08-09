@@ -15,14 +15,12 @@ export default function GridCard({dataItem}) {
    const [isFav,setIsFav]=useState({fav:false})
    const history= useHistory();
    useEffect(()=>{
-      favdataCollection=favselectionMap({favseries,favmovies});    
       setFavData(favdataCollection.favContentData);
-   },[favdataCollection.favContentData.length!==favData.length,userId,isFav]);
+   },[favdataCollection.favContentData.length,userId,isFav]);
    console.log("favData")
    console.log(favData); 
    return(
       <div>
-
           <div className="card-container" >
        <div className="cardImage">
        <img src={dataItem.imageSrc} alt="img1" onClick={()=>{
@@ -70,8 +68,8 @@ export default function GridCard({dataItem}) {
                    </span>
            </div>
         </div>
-        <div style={{marginLeft:"2rem",marginRight:"2rem",marginTop:"3rem",color:"white"}}    onClick={()=>{
-             playerItemUtil(dataItem)
+        <div style={{marginLeft:"2rem",marginRight:"2rem",marginTop:"3rem",color:"white"}} onClick={()=>{
+             playerItemUtil(dataItem,currentTypeValue)
              history.push("/player")
             }
           } >

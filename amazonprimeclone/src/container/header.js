@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
 import { FireBaseContext } from "../context/firebase";
+import classes from "./header.css"
 export default function HeaderContainer() {
   const {isProfileExpand,profileExpand,searchUtil,profileName} = useContext(Context);
   const {firebase} = useContext(FireBaseContext);
@@ -11,7 +12,7 @@ export default function HeaderContainer() {
     <Header >
     <Header.NavBar >
       <Link  to="/home">
-      <Header.Logo>primevideo</Header.Logo>
+      <Header.Logo style={{color:"white"}}>primevideo</Header.Logo>
       </Link>
     <Header.List>
       <Link to="/home">
@@ -37,18 +38,29 @@ export default function HeaderContainer() {
          }}/>
       </Header.SearchContainer>
       <Header.Profile onClick={profileExpand} >
-        <h3 >{profileName}</h3>
+        <div style={{display:"flex"}}>
+        <h3 className="proName" >{profileName}</h3>
+        {
+        isProfileExpand?(<span className="drpdwn">
+            <svg width="30" height="17" xmlns="http://www.w3.org/2000/svg"><g> <title>background</title> <rect fill="none" id="canvas_background" y="-1" x="-1"/></g><g> <title>Layer 1</title> <polygon transform="rotate(-180 24,24) " id="svg_1" points="0,12.438 48,12.438 24,35.562 " fill="#cccccc"/> </g></svg>
+            </span>):(<span className="drpdwn">
+            <svg width="30" height="17" xmlns="http://www.w3.org/2000/svg"><g> <title>background</title> <rect fill="none" id="canvas_background" y="-1" x="-1"/></g><g> <title>Layer 1</title> <polygon transform="rotate(-180 24,24) " id="svg_1" points="0,12.438 48,12.438 24,35.562 " fill="#cccccc"/> </g></svg>
+
+                        </span>)
+}
+       </div>
+           
         <div style={{display:isProfileExpand?"block":"none"}}>
         <div style={{maxWidth:"100%",display:"flex",backgroundColor:"#0f171e",position:"absolute",zIndex:"5",right:"2%",lineHeight:"40px",color:"#c4cacf"}}>
           <ul style={{display:"flex",listStyle:"none",}}>
             <div style={{marginRight:"5em",}}>
-            <li onClick={()=>{
+            <li className="pro-list" onClick={()=>{
               history.push("/favourites")
             }}>Your Watchlist</li>
-            <li>Account and Settings</li>
-            <li>Watch Anywhere</li>
-            <li>Help</li>
-            <li onClick={()=>{
+            <li className="pro-list">Account and Settings</li>
+            <li className="pro-list">Watch Anywhere</li>
+            <li className="pro-list">Help</li>
+            <li className="pro-list" onClick={()=>{
                console.log("logging out current user...");
                firebase.auth().signOut().then(()=>{
                  console.log("signout successful");
@@ -59,10 +71,10 @@ export default function HeaderContainer() {
             }}>Not {profileName}?Sign out</li>
             </div>
             <div style={{paddingLeft:"2em",marginRight:"5em",borderLeft:"2px solid"}}>
-            <li>Your Watchlist</li>
-            <li>Account and Settings</li>
-            <li>Watch Anywhere</li>
-            <li>Your Watchlist</li>
+            <li className="pro-list">Your Watchlist</li>
+            <li className="pro-list">Account and Settings</li>
+            <li className="pro-list">Watch Anywhere</li>
+            <li className="pro-list">Your Watchlist</li>
             </div>
           </ul>
         </div>

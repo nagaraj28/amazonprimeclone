@@ -5,7 +5,6 @@ export const Container=styled.div`
 export const NavBar = styled.nav`
 display:flex;
 color:#fff;
-
 `;
 export const List=styled.ul`
 list-style-type:none;
@@ -16,6 +15,7 @@ export const ListItem=styled.li`
 font-size:1.2em;
 font-weight:;
 margin:10px;
+color:white;
 `
 
 export const Logo=styled.h1`

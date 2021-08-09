@@ -1,0 +1,16 @@
+
+.pro-list{
+    color: white;
+    opacity: 0.6;
+}
+.pro-list:hover{
+opacity: 1;
+}
+.proName,.pro-list{
+    cursor: pointer;
+}
+.drpdwn{
+    margin-top: 14px;
+    margin-left: 0;
+    padding-left: 0;
+}
