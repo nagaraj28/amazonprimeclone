@@ -6,12 +6,11 @@ export const NavBar = styled.nav`
 display:flex;
 color:#fff;
 `;
-export const List=styled.ul`
-list-style-type:none;
-display:flex;
-flex-basis:80%;
+export const List=styled.div`
+
+}
 `;
-export const ListItem=styled.li`
+export const ListItem=styled.div`
 font-size:1.2em;
 font-weight:;
 margin:10px;
@@ -24,19 +23,13 @@ flex-basis:10%;
 export const SearchContainer=styled.div`
 display:flex;
 align-items:center;
+margin-left:auto;
 `;
 export const SearchIcon=styled.img`
 width:25px;
 `;
 export const SearchBox=styled.input`
-background-color:#0f171e;
-box-shadow:none;
-color:white;
-width:200px;
-height:25px;
-outline:none;
-border: 0px none;
-border-bottom:1px solid;
+
 `;
 
 export const Profile=styled.div`

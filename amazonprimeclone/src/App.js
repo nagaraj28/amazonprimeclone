@@ -44,7 +44,7 @@ function App() {
    <ProtectedRoute exact path="/" dataCollection={dataCollection} component={Home}/>
    <ProtectedRoute exact path="/movies" dataCollection={dataCollection} component={Movies}/>
    <ProtectedRoute exact path="/tvshows" dataCollection={dataCollection} component={TVShows}/>
-   <ProtectedRoute exact path="/tvshows" dataCollection={dataCollection} component={Kids}/>
+   <ProtectedRoute exact path="/kids" dataCollection={dataCollection} component={Movies}/>
    <ProtectedRoute exact path="/player" dataCollection={dataCollection} component={PlayerCard}/>
    <ProtectedRoute exact path="/player/playVideo" dataCollection={dataCollection} component={PlayVideo}/>
    <ProtectedRoute exact path="/genre" dataCollection={dataCollection} component={Genre}/>

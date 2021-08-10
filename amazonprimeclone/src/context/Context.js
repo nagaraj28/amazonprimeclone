@@ -11,7 +11,7 @@ export default function ContextProvider({children}){
     const [userId,setUserId]=useState("dummy");
     const [currentTypeValue,setCurrentType]=useState("series");
     const [videoTypeVal,setVideoTypeVal]=useState("series");
-
+    const [isNavOpen,setisNavOpen] = useState(true);
 
     const {firebase} = useContext(FireBaseContext);
       function profileExpand() {
@@ -63,7 +63,12 @@ export default function ContextProvider({children}){
       console.log("delete from favourites "+docId);
             firebase.firestore().collection("users").doc(userId).collection(type).doc(docId).delete(); 
     }
-  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userNameAndId,playerItem,playerItemUtil,addToFavourites,currentType,currentTypeValue,deleteFromFavourites,userId,videoTypeVal}}>
+    function updateNav(){
+      
+      const val=isNavOpen;
+      setisNavOpen(!(val));
+    }
+  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userNameAndId,playerItem,playerItemUtil,addToFavourites,currentType,currentTypeValue,deleteFromFavourites,userId,videoTypeVal,isNavOpen,updateNav}}>
         {children}
     </Context.Provider>)
 }

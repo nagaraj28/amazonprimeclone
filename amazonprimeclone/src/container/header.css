@@ -2,6 +2,14 @@
 .header{
    
 }
+.navlistctnr{
+    display: flex;
+    flex-basis: 80%;
+}
+.navlist{
+    display: flex;
+    flex-basis: 80%;
+}
 .pro-list{
     color: white;
     opacity: 0.6;
@@ -12,6 +20,7 @@ opacity: 1;
 .proName,.pro-list,.drpdwnup{
     cursor: pointer;
 }
+
 .proName{
     margin-left: 8px;
     font-size:15px;
@@ -27,4 +36,69 @@ opacity: 1;
 .drpdwndown{
     margin:0 15px;
     margin-top: 20px;
+}
+.browseitem{
+    display: none;
+}
+.navlistctnr{
+    display: flex;
+    flex-basis: 80%;
+}
+.listItem{
+    font-size:1.2em;
+font-weight:;
+margin:10px;
+color:white;
+
+}
+.search-box{
+    background-color:#0f171e;
+box-shadow:none;
+color:white;
+width:200px;
+height:25px;
+outline:none;
+border: 0px none;
+border-bottom:1px solid;
+}
+.openNav{
+    display: block;
+}
+.closeNav{
+    display: none;
+}
+.navlist{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+@media screen and (max-width: 900px) {
+    .browseitem{
+        display: flex;
+    }
+    .brse-item{
+        margin: 20px 0px 0px 10px;
+    }
+    .navlistctnr{
+        flex-direction: column;
+        max-width:100%;
+        background-color:#0f171e;
+        position:absolute;
+        z-index:5;
+        left:0;
+        line-height:40px;
+        color:#c4cacf;
+        padding:0 20%;
+    }
+    .navlist{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 600px){
+    .search-box{
+        width: 70px;
+    }
+}
+
+.listItem{
+    color: white;
 }
