@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 
 export  const CardContainer=forwardRef(({section,type,typeVal})=>{
     
-    SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade,Scrollbar]);
+    SwiperCore.use([Navigation, Pagination, Autoplay, EffectFade,Scrollbar,]);
     const {genreUtil,currentType} = useContext(Context);
 return(
     <>
@@ -29,6 +29,7 @@ return(
            <p style={{marginTop:"27px",marginLeft:"10px",fontSize:"13px",color:"#79b8f3"}} onClick={()=>{
               const typeVal = type==="Movies"?"movies":"series";
                currentType(typeVal)
+
                }}>See more</p>
            </Link> 
         </div>
@@ -45,17 +46,21 @@ return(
         onSlideChange={() => "slide change"}
         slidesPerColumnFill={"row"}
         breakpoints={{
-            500: {
+           250 : {
                 slidesPerView:1,
             },
-            560: {
+            670: {
                 slidesPerView:2
             },
-            1000:{
-                slidesPerView:4
+            955:{
+                slidesPerView:3
             },
             
-            1400:{
+            1250:{
+                slidesPerView:4
+            },
+
+            1520:{
                 slidesPerView:5
             }
         }  

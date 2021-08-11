@@ -6,7 +6,7 @@ import { FireBaseContext } from "../context/firebase";
 import { useWindowDimensions } from "../hooks";
 import classes from "./header.css"
 export default function HeaderContainer() {
-  const {isProfileExpand,profileExpand,searchUtil,profileName,isNavOpen,updateNav} = useContext(Context);
+  const {isProfileExpand,profileExpand,searchUtil,profileName,isNavOpen,updateNav,updateCurrNavItem,currNavItem} = useContext(Context);
   const {firebase} = useContext(FireBaseContext);
   const history = useHistory();
  
@@ -15,7 +15,9 @@ export default function HeaderContainer() {
   return (
     <Header className="header" >
     <Header.NavBar >
-      <Link  to="/"><Header.Logo style={{color:"white"}}>primevideo</Header.Logo></Link>
+      <Link  to="/"><Header.Logo  className="logotext" style={{color:"white"}} onClick={()=>{
+        updateCurrNavItem("home");
+      }}>primevideo</Header.Logo></Link>
      <div className="nav-list-ctnr">
      <div className="browseitem" onClick={()=>{
        updateNav();
@@ -44,18 +46,26 @@ export default function HeaderContainer() {
 } </div>
         <div className={(screenWidth<=900&&isNavOpen===true)?"navlistctnr closeNav":"navlistctnr opennav"}>
       <div className="navlist" >
-      <Link to="/"><span className="listItem">Home</span></Link>
-      <Link  to="/tvshows">
-      <span className="listItem">
+      <Link   to="/" onClick={()=>{
+        updateCurrNavItem("home");
+      }}><span className={currNavItem==="home"?"listItem activenavtitle":"listItem"} >Home</span></Link>
+      <Link  to="/tvshows" onClick={()=>{
+        updateCurrNavItem("tvshows");
+      }}>
+      <span className={currNavItem==="tvshows"?"listItem activenavtitle":"listItem"}>
 TVShows        </span>
 
       </Link>
-      <Link to="/movies">      <span className="listItem">
+      <Link  to="/movies" onClick={()=>{
+        updateCurrNavItem("movies");
+      }}>      <span className={currNavItem==="movies"?"listItem activenavtitle":"listItem"}>
 Movies        </span>
 
       </Link>
       
-      <Link to="/kids"><span className="listItem">Kids </span>
+      <Link  to="/kids"><span className={currNavItem==="kids"?"listItem activenavtitle":"listItem"} onClick={()=>{
+        updateCurrNavItem("kids");
+      }}>Kids </span>
       </Link>  
       </div>
       </div>
@@ -103,8 +113,9 @@ Movies        </span>
           <ul style={{display:"flex",listStyle:"none",}}>
             <div style={{marginRight:"5em",}}>
             <li className="pro-list" onClick={()=>{
+              updateCurrNavItem("watchlist");
               history.push("/favourites")
-            }}>Your Watchlist</li>
+            }} >Your Watchlist</li>
             <li className="pro-list">Account and Settings</li>
             <li className="pro-list">Watch Anywhere</li>
             <li className="pro-list">Help</li>

@@ -11,6 +11,7 @@ export default function ContextProvider({children}){
     const [userId,setUserId]=useState("dummy");
     const [currentTypeValue,setCurrentType]=useState("series");
     const [videoTypeVal,setVideoTypeVal]=useState("series");
+    const [currNavItem,setCurrNavItem]=useState("home");
     const [isNavOpen,setisNavOpen] = useState(true);
 
     const {firebase} = useContext(FireBaseContext);
@@ -68,7 +69,10 @@ export default function ContextProvider({children}){
       const val=isNavOpen;
       setisNavOpen(!(val));
     }
-  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userNameAndId,playerItem,playerItemUtil,addToFavourites,currentType,currentTypeValue,deleteFromFavourites,userId,videoTypeVal,isNavOpen,updateNav}}>
+    function updateCurrNavItem(text){
+      setCurrNavItem(text);
+    }
+  return (<Context.Provider value={{isProfileExpand,profileExpand,genre,genreUtil,searchText,searchUtil,profileName,userNameAndId,playerItem,playerItemUtil,addToFavourites,currentType,currentTypeValue,deleteFromFavourites,userId,videoTypeVal,isNavOpen,updateNav,updateCurrNavItem,currNavItem}}>
         {children}
     </Context.Provider>)
 }

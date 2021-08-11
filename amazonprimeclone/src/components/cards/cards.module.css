@@ -14,8 +14,15 @@
 
 
 .Slide{
-  height:220px !important;
+  height:200px !important;
   width: 100% !important;
+}
+@media screen and (max-width:635px) {
+  .Slide{
+    height:200px !important;
+    width: 100% !important;
+  }
+
 }
 
 .hidden {
