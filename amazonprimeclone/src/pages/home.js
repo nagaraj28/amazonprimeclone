@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 export default function Home({dataCollection}){
    console.log(dataCollection['series']);
 
-   
     return (
         <>
         <HeaderContainer/>
